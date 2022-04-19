@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card mt-5">
+        <img class="card-img-top" src="holder.js/100x180/" alt="">
+        <div class="card-body">
+            <form class="example-form" [formGroup]="addCourseForm">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Course Name</mat-label>
+                    <input matInput type="text" placeholder="Course Name" formControlName="name" autocomplete="false">
+                    <mat-error *ngIf="name.touched && name.hasError('required')">name is Required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Course Description</mat-label>
+                    <textarea matInput type="text" formControlName="description"></textarea>
+                    <mat-error *ngIf="description.touched && description.hasError('required')">description Is Required
+                    </mat-error>
+                </mat-form-field><br>
+
+                <input class="mb-3" (change)="onFileSelect($event)" type="file">
+                <div *ngIf="imageData">
+                    <img class="img-fluid" [src]="imageData" [alt]="addCourseForm.value.name" />
+                </div>
+                <br>
+                <mat-hint *ngIf="!addCourseForm.valid"><small>Please fill out all needed information</small></mat-hint>
+                <br>
+                <div class="button">
+                    <button mat-raised-button color="primary" type="button" class="submit-btn"
+                        [disabled]="!addCourseForm.valid" (click)="onSubmit()"> Add Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

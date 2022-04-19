@@ -1,0 +1,21 @@
+<div class="container-fluid mt-3">
+    <div class="add-btn mb-3">
+        <a class="btn " href="#" [routerLink]="['/course-add']" role="button">Add Course</a>
+    </div>
+    <div class="row">
+        <div *ngFor="let course of courses | async" class="col-xl-4 col-md-4 col-sm-6">
+            <div class="card mb-4">
+                <img class="card-img-top img-fluid"
+                    src="http://localhost:3000/images/{{course.image}}" alt="image" >
+                <div class="card-body">
+                    <h4 class="card-title">{{course.name}}</h4>
+                    <p class="card-text" style="text-align: justify">{{course.description.substring(0,85)}}</p>
+                </div>
+                <div class="    d-flex">
+                    <a routerLink="['/course-add']" class="nav-link" (click)="editCourse(course)">Edit</a>
+                    <a href="#" class="nav-link" (click)="deleteCourse(course.id)">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
